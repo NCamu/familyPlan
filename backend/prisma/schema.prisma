@@ -1,0 +1,18 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Slot {
+  id        Int      @id @default(autoincrement())
+  day       String
+  startTime Int
+  user      String
+  activity  String
+  weekId    String
+  createdAt DateTime @default(now())
+  @@unique([day, startTime, user, weekId])
+}
